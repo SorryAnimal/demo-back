@@ -6,6 +6,7 @@
 import type {Config} from 'jest';
 
 const config: Config = {
+  cache: true,
   moduleDirectories: ['node_modules', 'src'],
   verbose: true,
   transform: {

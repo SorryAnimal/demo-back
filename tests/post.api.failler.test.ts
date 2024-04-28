@@ -25,6 +25,10 @@ jest.mock('../src/client', () => ({
     },
   },
 }));
+
+// afterAll(() => {
+//   jest.resetAllMocks();
+// });
 test('GET /posts :: Get all posts with error = 500', async () => {
     const response = await request(app).get('/posts');
     expect(response.status).toBe(500);

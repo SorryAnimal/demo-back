@@ -18,13 +18,12 @@ interface IPostRepository {
 class PrismaPostRepository implements IPostRepository {
   async createPost(title: string, content: string): Promise<Post> {
     try {
-      const post = await prisma.post.create({
+      return await prisma.post.create({
         data: {
           title,
           content,
         },
       });
-      return post;
     } catch (error) {
       throw new Error('Error creating post');
     }
@@ -32,8 +31,7 @@ class PrismaPostRepository implements IPostRepository {
 
   async getPosts(): Promise<Post[]> {
     try {
-      const posts = await prisma.post.findMany();
-      return posts;
+      return await prisma.post.findMany();
     } catch (error) {
       throw new Error('Error getting posts');
     }
