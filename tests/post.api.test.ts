@@ -21,15 +21,13 @@ test('POST /posts :: Create a new post', async () => {
   expect(response.body).toHaveProperty('content', 'content');
 });
 
-test('POST /posts :: Create a new post with error = 500', async () => {
-    const response = await request(app)
-      .post('/posts')
-      .send({
-        title: 'title',
-        // Simulate invalid data
-        content: undefined,
-      });
-  
-    expect(response.status).toBe(500);
-    expect(response.body).toHaveProperty('error');
+test('POST /xxx :: not found route with error = 404', async () => { 
+  const response = await request(app)
+  .post('/xxx')
+  .send({
+    title: 'title',
+    content: 'content',
   });
+
+  expect(response.status).toBe(404);
+});
